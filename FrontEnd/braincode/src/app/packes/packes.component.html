@@ -1,3 +1,14 @@
 <p>
   packes works!
 </p>
+<agm-map [latitude]="lat" [longitude]="lng" [fitBounds]="true">
+  <agm-marker
+    *ngFor="let data of places"
+    [latitude]="data.Szerokosc"
+    [longitude]="data.Dlugosc"
+    [agmFitBounds]="true"
+    (markerClick)="markerClicked(data)"
+    [iconUrl]="'../../assets/' + data.Typ + '.svg'"
+  >
+  </agm-marker>
+</agm-map>

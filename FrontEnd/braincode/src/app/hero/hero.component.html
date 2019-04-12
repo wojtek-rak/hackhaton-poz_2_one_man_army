@@ -1,5 +1,7 @@
 <ul>
-  <li><a href="/">Paczkomat</a></li>
-  <li><a href="/home_delivery">Kurier</a></li>
+  <li><button (click)="showPackes()">Paczkomat</button></li>
+  <li><button (click)="showHome()">Kurier</button></li>
 </ul>
-<router-outlet></router-outlet>
+
+<app-packes *ngIf="packes"></app-packes>
+<app-home *ngIf="packes === false"></app-home>
