@@ -26,11 +26,17 @@ namespace BrainCodeBackEnd.Controllers
         }
 
         [HttpGet("{positionFrom}/{positionTo}")]
-        public string Get(string positionFrom, string positionTo)
+        public async Task<string> Get(string positionFrom, string positionTo)
         {
             var path = positionFrom + ":" + positionTo;
 
-            return path;
+            var response =
+                SendGetRequest(
+                    $"https://api.tomtom.com/routing/1/calculateRoute/{path}/xml?avoid=unpavedRoads&key=DWYzoz4w9Ty9EqIYrNDf0HVgDDSAbPxu");
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            return responseBody;
         }
 
         [HttpGet("GetCoordinates/{street}")]
@@ -46,7 +52,7 @@ namespace BrainCodeBackEnd.Controllers
             var coordinates = obj["results"].First()["bounds"]["northeast"];
             var latitude = coordinates.First().First().Value<float>();
             var longitude = coordinates.Last().First().Value<float>();
-            return latitude.ToString() + ":" + longitude.ToString();
+            return latitude.ToString() + "," + longitude.ToString();
         }
 
 
