@@ -13,8 +13,10 @@ namespace BrainCodeBackEnd.Controllers
     {
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<string> Get(string street, string city)
         {
+
+
             return new string[] { "value1", "value2" };
         }
 
