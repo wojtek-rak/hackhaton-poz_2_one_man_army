@@ -29,7 +29,7 @@ namespace BrainCodeBackEnd.Controllers
         }
 
         [HttpGet("{positionFrom}/{positionTo}")]
-        public async Task<string> Get(string positionFrom, string positionTo)
+        public async Task<JsonResult> Get(string positionFrom, string positionTo)
         {
             var path = positionFrom + ":" + positionTo;
 
@@ -40,7 +40,7 @@ namespace BrainCodeBackEnd.Controllers
             string responseBody = await response.Content.ReadAsStringAsync();
 
             var model = MapXML(responseBody);
-            return "";
+            return Json(model);
         }
 
         private Summary MapXML(string xmlCode)
