@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Xml.Serialization;
+using BrainCodeBackEnd.Models;
 using Newtonsoft.Json.Linq;
 
 namespace BrainCodeBackEnd.Controllers
@@ -36,7 +39,28 @@ namespace BrainCodeBackEnd.Controllers
 
             string responseBody = await response.Content.ReadAsStringAsync();
 
-            return responseBody;
+            var model = MapXML(responseBody);
+            return "";
+        }
+
+        private Summary MapXML(string xmlCode)
+        {
+            return new Summary()
+            {
+                LengthInMeters = GetObject(xmlCode, "lengthInMeters"),
+                TravelTimeInSeconds = GetObject(xmlCode, "travelTimeInSeconds"),
+                TrafficDelayInSeconds = GetObject(xmlCode, "trafficDelayInSeconds"),
+                DepartureTime = GetObject(xmlCode, "departureTime"),
+                ArrivalTime = GetObject(xmlCode, "arrivalTime")
+            };
+        }
+
+        private string GetObject(string xmlString, string tag)
+        {
+            var startIndex = xmlString.LastIndexOf($"<{tag}>");
+            var lastIndex = xmlString.LastIndexOf($"</{tag}>");
+            return xmlString.Substring(startIndex, lastIndex - startIndex).Remove(0, $"<{tag}>".Length);
+
         }
 
         [HttpGet("GetCoordinates/{street}")]
