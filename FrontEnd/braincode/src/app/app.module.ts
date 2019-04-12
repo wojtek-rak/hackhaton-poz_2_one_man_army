@@ -40,9 +40,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    AgmCoreModule.forRoot({
-      // apiKey: "AIzaSyDM8hNEwzSoIfbmKYIPYk8uxOC2ezUvx80"
-    })
+    AgmCoreModule.forRoot({})
   ],
   providers: [MapsDataService],
   bootstrap: [AppComponent]
