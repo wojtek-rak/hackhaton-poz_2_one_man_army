@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using BrainCodeBackEnd.Services;
+using BrainCodeBackEnd.Models;
 
 namespace BrainCodeBackEnd
 {
@@ -23,7 +25,10 @@ namespace BrainCodeBackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            var reader = new CSVReader();
+            Delivery delivery = new Delivery();
+            delivery = reader.GetCSV();
+            services.AddSingleton(delivery);
             //services.AddTransient<Middleware>()
             services.AddMvc();
         }
