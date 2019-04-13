@@ -7,55 +7,42 @@
           (click)="backToRecommended()"
           *ngIf="title !== 'Rekomendowany punkt odbioru'"
         >
-          <img
-            src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg"
-            width="25"
-            alt=""
-          /><a class="link">Wróć do rekomendowanych</a>
+          <i class="fas fa-arrow-left" style="color:#c8c8c8"></i>
+          <a class="link">Wróć do rekomendowanych</a>
         </div>
         <h1 class="heading">{{ title }}</h1>
         <div class="infodisplaydiv">
+
           <div class="infodiv">
-            <i class="fas fa-map-marker-alt"></i>
+            <div class="control">
+              <i class="fas fa-map-marker-alt fa-2x" style="color:#bababa"></i>
+            </div>
             <div class="options">{{ address }}</div>
           </div>
           <div class="infodiv">
-            <img
-              src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg"
-              width="50"
-              height="50"
-              alt=""
-            />
+            <div class="control">
+              <i class="fas fa-calendar-alt fa-2x" style="color:#bababa"></i>
+            </div>
+            
             <div class="options">{{ time }}</div>
           </div>
-          <!-- <div class="infodiv">
-            <img
-              src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg"
-              width="50"
-              height="50"
-              alt=""
-            />
-            <div class="options" #price></div>
-          </div> -->
           <div class="infodivbottom">
-            <img
-              src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg"
-              width="50"
-              height="50"
-              alt=""
-            />
+            <div class="control">
+              <i class="fa fa-dollar-sign fa-2x" style="color:#bababa"></i>
+            </div>
             <div class="options">{{ price }}</div>
           </div>
+
         </div>
         <div class="wrapperdiv">
-          <button
+          <!-- <button
             data-w-id="9e696bd3-e226-53ec-2368-e699709f1a28"
             class="button w-button"
             (click)="slideBottomDiv()"
           >
             Kiedy mogę odebrać paczkę?
-          </button>
-          <div
+          </button> -->
+          <!-- <div
             data-w-id="c2d1e5e9-387b-06c7-8c29-b5867c71a3fb"
             style="height:0PX"
             class="contentdiv slide-bottom"
@@ -68,7 +55,7 @@
             <p class="paragraph">P<br />‍10-23<br /></p>
             <p class="paragraph">S<br />‍‍10-23<br /></p>
             <p class="paragraph">N<br />‍10-23<br /></p>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="rightdiv">
