@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -40,8 +41,12 @@ namespace BrainCodeBackEnd.Services
                     delivery.Adres = str[2].Replace("\"", "");
                     delivery.Kod_pocztowy = str[3].Replace("\"", "");
                     delivery.Miasto = str[4].Replace("\"", "");
-                    delivery.Dlugosc = str[5].Replace("\"", "");
-                    delivery.Szerokosc = str[6].Replace("\"", "");
+                    float dl;
+                    float.TryParse(str[5].Replace("\"", ""), NumberStyles.Any, CultureInfo.InvariantCulture, out dl);
+                    delivery.Dlugosc = dl;
+                    float sr;
+                    float.TryParse(str[6].Replace("\"", ""), NumberStyles.Any, CultureInfo.InvariantCulture, out sr);
+                    delivery.Szerokosc = sr;
                     delivery.Godziny_odbioru = str[7].Replace("\"", "");
                     delivery.Uwagi = str[8].Replace("\"", "");
                     list.deliveryList.Add(delivery);
