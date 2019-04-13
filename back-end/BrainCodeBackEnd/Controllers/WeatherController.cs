@@ -26,7 +26,7 @@ namespace BrainCodeBackEnd.Controllers
         }
 
         [HttpGet("{filter}")]
-        public async Task<string> GetWeather(string filter)
+        public async Task<JsonResult> GetWeather(string filter)
         {
             var filters = filter.Split(",");
 
@@ -43,8 +43,25 @@ namespace BrainCodeBackEnd.Controllers
 
             var weatherModel = Newtonsoft.Json.JsonConvert.DeserializeObject<WeatherRoot>(responseBody);
 
+            var weatherResult = new WeatherResult();
+
+            weatherResult.weather = new List<WeatherEntity>();
+
+            foreach (var weather in weatherModel.list)
+            {
+                weatherResult.weather.Add(new WeatherEntity()
+                {
+                    temp = weather.main.temp,
+                    main = weather.weather.First().main,
+                    icon = weather.weather.First().icon,
+                    dt_txt = weather.dt_txt
+                });
+            }
+            
+
+
             //http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&appid=4aefe593e29e3bb1224da04a5fef6b30
-            return responseBody;
+            return Json(weatherResult.weather.Where(x => x.dt_txt.Contains("12:00:00")));
         }
 
         private HttpResponseMessage SendGetRequest(string url)
