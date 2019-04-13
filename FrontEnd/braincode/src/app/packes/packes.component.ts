@@ -17,21 +17,13 @@ export class PackesComponent implements OnInit {
   private _title = "Rekomendowany punkt odbioru";
   private _recommended: PackData;
   private _checked: PackData;
-  private _timeToGet = "0 min";
 
   lat: number = 52.406376;
   lng: number = 16.925167;
   private _places: Array<PackData> = null;
   constructor(private service: MapsDataService) {}
 
-  public changeLatLng(lat, lng) {
-    this.lat = Number(lat);
-    this.lng = Number(lng);
-    this.getMarks();
-  }
-
   backToRecommended() {
-    this._checked = this._recommended;
     this.setData(this._recommended);
   }
 
@@ -50,39 +42,22 @@ export class PackesComponent implements OnInit {
     this.slideBottomEl.nativeElement.classList.add("visible");
   }
 
-  getTimeToDestination() {
-    // console.log(
-    //   `${this.lat},${this.lng}`,
-    //   `${this._checked.szerokosc},${this._checked.dlugosc}`
-    // );
-    this.service
-      .getDestination(
-        `${this.lat},${this.lng}`,
-        `${this._checked.szerokosc},${this._checked.dlugosc}`
-      )
-      .subscribe((res: any) => {
-        let minutes = Math.round(res.travelTimeInSeconds / 60);
-        this._timeToGet = `${minutes} min`;
-      });
-  }
-
   setData($data) {
     if ($data.typ === "main") return;
     this._address = `${$data.miasto}, ${$data.adres}`;
     this._price = `${this.getPriceByName($data.typ)} zł`;
     this._title = $data.typ.replace(/_/g, " ");
     this._time = `${this.getDaysByName($data.typ)}`;
-    this.getTimeToDestination();
+    // console.log($data.godziny_odbioru.split(""));
   }
 
-  getMarks() {
+  ngOnInit() {
     this.service.getLocations(this.lat, this.lng).subscribe((res: any) => {
       this._places = <Array<PackData>>res;
       this._recommended = res[0];
-      this._checked = this._recommended;
       this._recommended.typ = "Rekomendowany punkt odbioru";
       this.setData(this._recommended);
-      this._places.push({
+      this.places.push({
         typ: "main",
         nazwa: "",
         adres: "",
@@ -100,11 +75,29 @@ export class PackesComponent implements OnInit {
       }
 
       this._places.sort(compare);
+      console.log(this.places);
     });
-  }
+    // this._places = <Array<PackData>>this.service.getLocations();
+    // this.places.push({
+    //   Typ: "main",
+    //   Nazwa: "",
+    //   Adres: "",
+    //   Kod_pocztowy: "",
+    //   Miasto: "",
+    //   Dlugosc: this.lng.toString(),
+    //   Szerokosc: this.lat.toString(),
+    //   Godziny_odbioru: "",
+    //   Uwagi: ""
+    // });
+    // function compare(a, b) {
+    //   if (a.Szerokosc > b.Szerokosc) return -1;
+    //   if (a.Szerokosc < b.Szerokosc) return 1;
+    //   return 0;
+    // }
 
-  ngOnInit() {
-    this.getMarks();
+    // this._places.sort(compare);
+
+    // console.log(this.places);
   }
 
   markerClicked($data) {
@@ -139,9 +132,5 @@ export class PackesComponent implements OnInit {
 
   get checked() {
     return this._checked;
-  }
-
-  get timeToGet() {
-    return this._timeToGet;
   }
 }

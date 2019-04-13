@@ -9,18 +9,6 @@ export class MapsDataService {
   private host = "http://localhost/";
   constructor(private _http: HttpClient) {}
 
-  public getDestination(from, to) {
-    return this._http.get(
-      `http://braincode2019.azurewebsites.net/api/tomtom/${from}/${to}`
-    );
-  }
-
-  public getLatLng(coords) {
-    return this._http.get(
-      `http://braincode2019.azurewebsites.net/api/tomtom/GetCoordinates/${coords}`
-    );
-  }
-
   public getLocations(latitude, longitude) {
     return this._http.get(
       `http://braincode2019.azurewebsites.net/api/points/pointsFilter/${longitude},${latitude}`

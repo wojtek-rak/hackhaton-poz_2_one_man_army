@@ -4,7 +4,7 @@
     <li><button (click)="showHome()">Kurier</button></li>
   </ul> -->
   <div class="w-form">
-    <form>
+    <form id="email-form" name="email-form" data-name="Email Form">
       <label for="name">Adres</label
       ><input
         type="text"
@@ -13,21 +13,20 @@
         data-name="Name"
         maxlength="256"
         class="w-input"
-        #input
-      /><button
-        (click)="changeLocation()"
-        type="button"
-        class="button-2 w-button"
-      >
-        Prześlij Adres
-      </button>
+      /><a href="#" class="button-2 w-button">Prześlij Adres</a>
     </form>
+    <div class="w-form-done">
+      <div>Thank you! Your submission has been received!</div>
+    </div>
+    <div class="w-form-fail">
+      <div>Oops! Something went wrong while submitting the form.</div>
+    </div>
   </div>
   <div class="choicediv">
     <a class="buttonbigchoice w-button" (click)="showPackes()" #first
       >W PUNKCIE</a
     ><a class="buttonbigchoice w-button" (click)="showHome()" #second>KURIER</a>
   </div>
-  <app-packes *ngIf="packes" #appPackes></app-packes>
+  <app-packes *ngIf="packes"></app-packes>
   <app-home *ngIf="packes === false"></app-home>
 </div>
