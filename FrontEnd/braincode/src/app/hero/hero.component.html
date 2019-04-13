@@ -1,0 +1,33 @@
+<div class="hero-container">
+  <!-- <ul>
+    <li><button (click)="showPackes()">Paczkomat</button></li>
+    <li><button (click)="showHome()">Kurier</button></li>
+  </ul> -->
+  <div class="w-form">
+    <form>
+      <label for="name">Adres</label
+      ><input
+        type="text"
+        id="name"
+        name="name"
+        data-name="Name"
+        maxlength="256"
+        class="w-input"
+        #input
+      /><button
+        (click)="changeLocation()"
+        type="button"
+        class="button-2 w-button"
+      >
+        Prześlij Adres
+      </button>
+    </form>
+  </div>
+  <div class="choicediv">
+    <a class="buttonbigchoice w-button" (click)="showPackes()" #first
+      >W PUNKCIE</a
+    ><a class="buttonbigchoice w-button" (click)="showHome()" #second>KURIER</a>
+  </div>
+  <app-packes *ngIf="packes" #appPackes></app-packes>
+  <app-home *ngIf="packes === false"></app-home>
+</div>

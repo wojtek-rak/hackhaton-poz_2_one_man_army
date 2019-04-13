@@ -1,0 +1,69 @@
+<div class="section">
+  <div class="hero">
+    <div class="centerdiv">
+      <div class="leftdiv">
+        <div
+          class="div-block-3 back-to-recommended"
+          (click)="backToRecommended()"
+          *ngIf="title !== 'Rekomendowany punkt odbioru'"
+        >
+          <i class="fas fa-arrow-left" style="color:#00a790"></i>
+          <a class="link">Wróć do rekomendowanych</a>
+        </div>
+        <h1 class="heading">{{ title }}</h1>
+        <div class="infodisplaydiv">
+          <div class="infodiv">
+            <i class="fas fa-map-marker-alt fa-2x" style="color:#bababa"></i>
+            <div class="options">{{ address }}</div>
+          </div>
+          <div class="infodiv">
+            <i class="fas fa-calendar-alt fa-2x" style="color:#bababa"></i>
+            <div class="options">{{ time }}</div>
+          </div>
+
+          <div class="infodiv">
+            <i class="fa fa-dollar-sign fa-2x" style="color:#bababa"></i>
+            <div class="options">{{ price }}</div>
+          </div>
+          <div class="infodivbottom">
+            <i class="fa fa-clock fa-2x" style="color:#bababa"></i>
+            <div class="options">Czas dojazdu samochodem: {{ timeToGet }}</div>
+          </div>
+        </div>
+        <div class="wrapperdiv">
+          
+        </div>
+      </div>
+      <div class="rightdiv">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+          <ng-container *ngIf="places !== null">
+            <agm-marker
+              *ngFor="let data of places"
+              [latitude]="data.szerokosc"
+              [longitude]="data.dlugosc"
+              [agmFitBounds]="false"
+              (markerClick)="markerClicked(data)"
+              [iconUrl]="
+                data.typ === 'main'
+                  ? '../../assets/main.svg'
+                  : data === checked
+                  ? '../../assets/checked.svg'
+                  : '../../assets/icon.svg'
+              "
+              [label]="
+                data === recommended
+                  ? {
+                      text: 'rekomendowany',
+                      fontWeight: 'bold',
+                      fontSize: '17px'
+                    }
+                  : {}
+              "
+            >
+            </agm-marker
+          ></ng-container>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</div>
