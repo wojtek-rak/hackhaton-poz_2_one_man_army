@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AgmCoreModule } from "@agm/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MapsDataService } from "./services/maps-data.service";
 import { AppComponent } from "./app.component";
@@ -11,6 +12,7 @@ import { PackesComponent } from "./packes/packes.component";
 import { HomeComponent } from "./home/home.component";
 import { HttpClientModule } from "@angular/common/http";
 import { HomepageComponent } from "./homepage/homepage.component";
+import { InstructionComponent } from "./instruction/instruction.component";
 
 const appRoutes: Routes = [
   {
@@ -30,6 +32,10 @@ const appRoutes: Routes = [
   {
     path: "homepage",
     component: HomepageComponent
+  },
+  {
+    path: "instruction",
+    component: InstructionComponent
   }
 ];
 
@@ -40,13 +46,16 @@ const appRoutes: Routes = [
     HeroComponent,
     PackesComponent,
     HomeComponent,
-    HomepageComponent
+    HomepageComponent,
+    InstructionComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    AgmCoreModule.forRoot({})
+    AgmCoreModule.forRoot({}),
+    FormsModule, // <========== Add this line!
+    ReactiveFormsModule
   ],
   providers: [MapsDataService],
   bootstrap: [AppComponent]

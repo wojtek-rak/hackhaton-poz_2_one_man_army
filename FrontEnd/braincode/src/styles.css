@@ -418,7 +418,6 @@ th {
   display: -ms-flexbox;
   display: flex;
   height: 600px;
-  margin-bottom: 100px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;

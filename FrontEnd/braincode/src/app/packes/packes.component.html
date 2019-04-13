@@ -105,3 +105,13 @@
     </div>
   </div>
 </div>
+<h4 class="weather-title">Domyślny odbiór paczki: jak najszybciej</h4>
+<div class="weather" *ngIf="weather !== null">
+  <ng-container *ngFor="let we of weather; let i = index">
+    <div class="weather-el" [ngClass]="{ selected: i === 1 }">
+      <img src="http://openweathermap.org/img/w/{{ we.icon }}.png" />
+      <p class="temperature">{{ we.temp }}</p>
+      <p class="day">{{ we.dt_txt }}</p>
+    </div>
+  </ng-container>
+</div>

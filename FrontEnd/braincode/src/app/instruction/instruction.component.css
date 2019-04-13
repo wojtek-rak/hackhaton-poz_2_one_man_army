@@ -1,0 +1,106 @@
+.body {
+  background-color: rgba(43, 43, 43, 0.1);
+}
+
+.section {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.partsdiv {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 50px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+}
+
+.part {
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 30px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: #fff;
+  text-align: center;
+}
+
+.headingstep {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.image {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.paragraph {
+  font-family: "Open Sans", sans-serif;
+}
+
+.bluetextblock {
+  margin-bottom: 15px;
+  -webkit-transition: color 400ms ease;
+  transition: color 400ms ease;
+  font-family: "Open Sans", sans-serif;
+  color: #00a790;
+}
+
+.bluetextblock:hover {
+  color: #08cab0;
+}
+
+.txt {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.buttonbig {
+  min-width: 100%;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: hsla(21.176470588235297, 100%, 50%, 1);
+  -webkit-transition: background-color 400ms ease;
+  transition: background-color 400ms ease;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+}
+
+.buttonbig:hover {
+  background-color: hsla(21.176470588235297, 100%, 50%, 0.84);
+}
+
+.heading-2 {
+  margin-top: 35px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+}
