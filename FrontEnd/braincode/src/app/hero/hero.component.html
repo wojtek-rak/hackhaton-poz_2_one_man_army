@@ -1,7 +1,32 @@
-<ul>
-  <li><button (click)="showPackes()">Paczkomat</button></li>
-  <li><button (click)="showHome()">Kurier</button></li>
-</ul>
-
-<app-packes *ngIf="packes"></app-packes>
-<app-home *ngIf="packes === false"></app-home>
+<div class="hero-container">
+  <!-- <ul>
+    <li><button (click)="showPackes()">Paczkomat</button></li>
+    <li><button (click)="showHome()">Kurier</button></li>
+  </ul> -->
+  <div class="w-form">
+    <form id="email-form" name="email-form" data-name="Email Form">
+      <label for="name">Adres</label
+      ><input
+        type="text"
+        id="name"
+        name="name"
+        data-name="Name"
+        maxlength="256"
+        class="w-input"
+      /><a href="#" class="button-2 w-button">Prześlij Adres</a>
+    </form>
+    <div class="w-form-done">
+      <div>Thank you! Your submission has been received!</div>
+    </div>
+    <div class="w-form-fail">
+      <div>Oops! Something went wrong while submitting the form.</div>
+    </div>
+  </div>
+  <div class="choicediv">
+    <a class="buttonbigchoice w-button" (click)="showPackes()" #first
+      >W PUNKCIE</a
+    ><a class="buttonbigchoice w-button" (click)="showHome()" #second>KURIER</a>
+  </div>
+  <app-packes *ngIf="packes"></app-packes>
+  <app-home *ngIf="packes === false"></app-home>
+</div>

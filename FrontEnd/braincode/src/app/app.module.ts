@@ -10,6 +10,7 @@ import { HeroComponent } from "./hero/hero.component";
 import { PackesComponent } from "./packes/packes.component";
 import { HomeComponent } from "./home/home.component";
 import { HttpClientModule } from "@angular/common/http";
+import { HomepageComponent } from "./homepage/homepage.component";
 
 const appRoutes: Routes = [
   {
@@ -25,6 +26,10 @@ const appRoutes: Routes = [
     //     component: HomeComponent
     //   }
     // ]
+  },
+  {
+    path: "homepage",
+    component: HomepageComponent
   }
 ];
 
@@ -34,7 +39,8 @@ const appRoutes: Routes = [
     MenuComponent,
     HeroComponent,
     PackesComponent,
-    HomeComponent
+    HomeComponent,
+    HomepageComponent
   ],
   imports: [
     HttpClientModule,
