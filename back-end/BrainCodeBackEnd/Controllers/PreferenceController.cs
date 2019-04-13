@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BrainCodeBackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,8 +11,15 @@ namespace BrainCodeBackEnd.Controllers
 {
     public class PreferenceController : Controller
     {
+
+        private readonly Delivery _delivery;
+        public PreferenceController(Delivery delivery)
+        {
+            _delivery = delivery;
+        }
         // GET: /<controller>/
-        public string getPreferences(int price, string category)
+        [HttpGet("{price}/{category}")]
+        public string GetPreferences(int price, string category)
         {
             string paczkomat = "paczkomat";
             string odbior = "odbior";
