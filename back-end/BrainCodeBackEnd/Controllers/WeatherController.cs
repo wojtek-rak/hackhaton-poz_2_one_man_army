@@ -21,7 +21,7 @@ namespace BrainCodeBackEnd.Controllers
             httpClient.DefaultRequestHeaders
                 .Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "https://api.opencagedata.com/geocode/v1");
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "http://api.openweathermap.org/data");
 
         }
 
@@ -51,7 +51,7 @@ namespace BrainCodeBackEnd.Controllers
             {
                 weatherResult.weather.Add(new WeatherEntity()
                 {
-                    temp = weather.main.temp,
+                    temp = Math.Round(weather.main.temp - 273, 2),
                     main = weather.weather.First().main,
                     icon = weather.weather.First().icon,
                     dt_txt = weather.dt_txt

@@ -21,7 +21,7 @@ namespace BrainCodeBackEnd.Controllers
         }
         // GET: /<controller>/
         [HttpGet("{price}/{category}/{filter}")]
-        public string GetPreferences(int price, string category, string filter)
+        public JsonResult GetPreferences(int price, string category, string filter)
         {
             string paczkomat = "paczkomat";
             string odbior = "odbior";
@@ -101,7 +101,7 @@ namespace BrainCodeBackEnd.Controllers
                     }
                 }
             }
-            return result;
+            return Json(result);
         }
     }
 }
