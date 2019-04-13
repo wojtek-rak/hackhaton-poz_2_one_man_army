@@ -34,6 +34,7 @@ export class MapsDataService {
   }
 
   public getWeather(coords) {
+    console.log(coords);
     return this._http.get(
       `http://braincode2019.azurewebsites.net/api/weather/${coords}`
     );

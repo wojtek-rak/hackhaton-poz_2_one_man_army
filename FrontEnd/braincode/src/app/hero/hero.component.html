@@ -28,6 +28,12 @@
       >W PUNKCIE</a
     ><a class="buttonbigchoice w-button" (click)="showHome()" #second>KURIER</a>
   </div>
+  <div
+    class="recommended"
+    [ngClass]="delivery === 'paczkomat' ? null : 'moved'"
+  >
+    (rekomendowane)
+  </div>
   <app-packes *ngIf="packes" #appPackes></app-packes>
   <app-home *ngIf="packes === false"></app-home>
 </div>

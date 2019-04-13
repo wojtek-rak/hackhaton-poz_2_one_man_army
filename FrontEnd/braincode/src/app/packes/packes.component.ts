@@ -80,7 +80,7 @@ export class PackesComponent implements OnInit {
       this._places = <Array<PackData>>res;
       this._recommended = res[0];
       this._checked = this._recommended;
-      this._recommended.typ = "Rekomendowany punkt odbioru";
+      // this._recommended.typ = "Rekomendowany punkt odbioru";
       this.setData(this._recommended);
       this._places.push({
         typ: "main",
@@ -151,10 +151,17 @@ export class PackesComponent implements OnInit {
 
   showWeather() {
     console.log(this.lat, this.lng);
-    this.service.getWeather(`${this.lng}, ${this.lat}`).subscribe(res => {
-      console.log(res);
-      this._weather = res;
-    });
+    this.service.getWeather(`${this.lng},${this.lat}`).subscribe(
+      res => {
+        console.log(res);
+        this._weather = res;
+      },
+      err => {
+        // this.service.getWeather("16.925167,52.4063").subscribe(res => {
+        //   this._weather = res;
+        // });
+      }
+    );
   }
 
   get places() {

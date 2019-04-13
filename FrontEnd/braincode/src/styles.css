@@ -612,6 +612,10 @@ th {
   text-align: right;
 }
 
+.link-block.w-inline-block {
+  display: flex;
+}
+
 .link-block {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2580,4 +2584,56 @@ textarea.w-select {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+body.dark {
+  background-color: #474747;
+  color: rgb(209, 209, 209);
+}
+
+body.dark .leftdivk,
+body.dark .rightdivk,
+body.dark .rightdiv,
+body.dark .leftdiv {
+  background: #474747;
+}
+
+body.dark .navbar {
+  background: #474747;
+}
+
+body.dark .infodiv {
+  border-color: #676767;
+}
+
+body.dark .w-button {
+  color: #282828;
+}
+
+body.dark input {
+  background-color: #636363;
+  border-color: #636363;
+}
+
+body.dark .buttonbigchoice.unactive {
+  background: #6f6f6f;
+}
+
+body.dark .weather-el,
+body.dark .link-blocknotavaliable,
+body.dark .w-inline-block {
+  color: rgb(209, 209, 209);
+}
+
+body.dark .selected {
+  background: rgb(119, 115, 115);
+}
+
+body.dark .link-block,
+body.dark .link-blocknotavaliable {
+  border-bottom-color: #696969;
+}
+
+body.dark .graytxt {
+  color: rgba(129, 129, 129, 0.92);
 }

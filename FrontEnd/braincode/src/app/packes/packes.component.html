@@ -5,7 +5,7 @@
         <div
           class="div-block-3 back-to-recommended"
           (click)="backToRecommended()"
-          *ngIf="title !== 'Rekomendowany punkt odbioru'"
+          *ngIf="checked !== recommended"
         >
           <i class="fas fa-arrow-left" style="color:#00a790"></i>
           <a class="link">Wróć do rekomendowanych</a>
@@ -30,9 +30,7 @@
             <div class="options">Czas dojazdu samochodem: {{ timeToGet }}</div>
           </div>
         </div>
-        <div class="wrapperdiv">
-          
-        </div>
+        <div class="wrapperdiv"></div>
       </div>
       <div class="rightdiv">
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">

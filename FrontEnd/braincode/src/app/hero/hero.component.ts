@@ -35,9 +35,13 @@ export class HeroComponent implements OnInit {
     this.service
       .deliveryType(Globals.data.price, Globals.data.category, text)
       .subscribe(res => {
-        if (res === "paczkomat") this.showPackes();
-        //this._delivery = "paczkomat";
-        else this.showHome(); // this._delivery = "kurier";
+        if (res === "paczkomat") {
+          this.showPackes();
+          this._delivery = "paczkomat";
+        } else {
+          this.showHome();
+          this._delivery = "kurier";
+        }
         // console.log(this._delivery);
       });
   }
@@ -94,4 +98,8 @@ export class HeroComponent implements OnInit {
   // get weather() {
   //   return this._weather;
   // }
+
+  get delivery() {
+    return this._delivery;
+  }
 }

@@ -21,7 +21,6 @@
 
 .navbar {
   display: block;
-  background-color: #fff;
 }
 
 .container-2 {
@@ -194,7 +193,7 @@
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .heading-2 {

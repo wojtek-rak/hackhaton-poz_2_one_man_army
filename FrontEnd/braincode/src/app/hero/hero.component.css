@@ -8,3 +8,16 @@
   margin-top: 20px;
   width: 350px;
 }
+
+/* .buttonbigchoice::after {
+  content: "(rekomendowane)";
+} */
+
+.recommended {
+  margin-top: -40px;
+  color: #ff5a00;
+}
+
+.recommended.moved {
+  margin-left: 180px;
+}
