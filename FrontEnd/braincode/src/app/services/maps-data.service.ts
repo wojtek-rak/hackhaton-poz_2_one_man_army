@@ -38,5 +38,8 @@ export class MapsDataService {
     ];
     // return this._http.get(this.host + "api/");
     return data;
+    return this._http.get(
+      "http://braincode2019.azurewebsites.net/api/points/points"
+    );
   }
 }
