@@ -480,9 +480,20 @@ th {
 }
 
 .options {
-  margin-left: 25px;
+  margin-left: 0px;
   font-family: "PT Sans", sans-serif;
   font-size: 16px;
+}
+.control {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .infodivbottom {
