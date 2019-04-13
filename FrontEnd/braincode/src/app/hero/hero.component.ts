@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, Input } from "@angular/core";
 import { PackData } from "../classes/pack-data";
+import { MapsDataService } from "../services/maps-data.service";
 
 @Component({
   selector: "app-hero",
@@ -9,8 +10,22 @@ import { PackData } from "../classes/pack-data";
 export class HeroComponent implements OnInit {
   @ViewChild("first") first;
   @ViewChild("second") second;
+  @ViewChild("input") input;
+  @ViewChild("appPackes") appPackes;
   private _packes = true;
-  constructor() {}
+  constructor(private service: MapsDataService) {}
+
+  changeLocation() {
+    this.service
+      .getLatLng(
+        this.input.nativeElement.value.replace(/\s/g, "-").toLowerCase()
+      )
+      .subscribe((res: any) => {
+        let latLng = res.split(",");
+        console.log(latLng);
+        this.appPackes.changeLatLng(latLng[0], latLng[1]);
+      });
+  }
 
   ngOnInit() {
     this.first.nativeElement.classList.remove("unactive");
