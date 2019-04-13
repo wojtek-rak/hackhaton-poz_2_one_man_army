@@ -101,7 +101,7 @@
             />
             <div class="usertxt">4 oceny produktu</div>
           </div>
-          <div class="pricediv">
+          <!-- <div class="pricediv">
             <h1 class="heading-2">89,00 zł</h1>
           </div>
           <div class="infodiv">
@@ -121,7 +121,8 @@
               <div class="bluetxt">10 dni</div>
               <div class="graytxt">na odstąpienie od umowy</div>
             </div>
-          </div>
+          </div> -->
+
           <div class="infodivc">
             <div class="graytxt">Liczba sztuk:</div>
             <div class="div-block-10">
@@ -159,13 +160,52 @@
               </div>
             </div>
           </div>
-          <a routerLink="#" class="buttonbig w-button">DODAJ DO KOSZYKA</a
-          ><a routerLink="/" class="buttonbig w-button">KUP TERAZ</a>
-          <div class="divbottom">
-            <div class="graytxt">
-              Otrzymasz kupiony przedmiot albo zwrócimy Ci pieniądze.
-            </div>
-            <div class="usertxt">Sprawdź szczegóły.</div>
+          <a routerLink="/instruction" class="usertxt href"
+            >Obawiasz się uszkodzonej lub niedopasowanej paczki? Sprawdź, jak
+            zwrócić!</a
+          >
+          <div class="form-wrapper">
+            <form #form="ngForm" (ngSubmit)="submitForm(form)">
+              <label>Wybierz kategorię</label>
+              <label class="forRadio"
+                ><input
+                  type="radio"
+                  name="category"
+                  value="Elektronika"
+                  ngModel
+                />Elektronika</label
+              >
+              <label class="forRadio"
+                ><input
+                  type="radio"
+                  name="category"
+                  value="Uroda"
+                  ngModel
+                />Uroda</label
+              >
+              <label for="text-input">Adres</label>
+              <input
+                #input
+                id="text-input"
+                type="text"
+                class="w-input"
+                name="address"
+                ngModel
+              />
+
+              <label for="number-input">Cena</label>
+              <input
+                id="number-input"
+                type="number"
+                class="w-input"
+                name="price"
+                ngModel
+              />
+
+              <button class="buttonbig w-button button-colored" type="submit">
+                KUP TERAZ
+              </button>
+            </form>
           </div>
         </div>
       </div>

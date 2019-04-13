@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, ɵConsole } from "@angular/core";
 import { MapsDataService } from "../services/maps-data.service";
 import { PackData } from "../classes/pack-data";
 import { longStackSupport } from "q";
 import { last } from "@angular/router/src/utils/collection";
+import { Globals } from "../classes/globals";
 
 @Component({
   selector: "app-packes",
@@ -18,13 +19,16 @@ export class PackesComponent implements OnInit {
   private _recommended: PackData;
   private _checked: PackData;
   private _timeToGet = "0 min";
+  private _delivery = "paczkomat";
+  private _weather = null;
 
-  lat: number = 52.406376;
-  lng: number = 16.925167;
+  lat: number; // = 52.406376;
+  lng: number; // = 16.925167;
   private _places: Array<PackData> = null;
   constructor(private service: MapsDataService) {}
 
   public changeLatLng(lat, lng) {
+    this.showWeather();
     this.lat = Number(lat);
     this.lng = Number(lng);
     this.getMarks();
@@ -46,15 +50,11 @@ export class PackesComponent implements OnInit {
   }
 
   slideBottomDiv() {
-    console.log("ddf");
+    // console.log("ddf");
     this.slideBottomEl.nativeElement.classList.add("visible");
   }
 
   getTimeToDestination() {
-    // console.log(
-    //   `${this.lat},${this.lng}`,
-    //   `${this._checked.szerokosc},${this._checked.dlugosc}`
-    // );
     this.service
       .getDestination(
         `${this.lat},${this.lng}`,
@@ -103,14 +103,58 @@ export class PackesComponent implements OnInit {
     });
   }
 
+  // deliveryType(text) {
+  //   this.service
+  //     .deliveryType(Globals.data.price, Globals.data.category, text)
+  //     .subscribe(res => {
+  //       if (res === "paczkomat") this._delivery = "paczkomat";
+  //       else this._delivery = "kurier";
+  //     });
+  // }
+
   ngOnInit() {
+    if (Globals.data === null) {
+      this.lat = 52.406376;
+      this.lng = 16.925167;
+    } else {
+      // let temp = "";
+      // let temp2 = "";
+      // let whose = 0;
+      // for (let i = 0; i < Globals.data.coords.length; i++) {
+      //   if (whose === 0) {
+      //     if (Globals.data.coords[i] !== ",") temp += Globals.data.coords[i];
+      //   }
+
+      //   if (Globals.data.coords[i] === ",") whose = 1;
+
+      //   if (whose === 1) {
+      //     if (Globals.data.coords[i] !== ",") temp2 += Globals.data.coords[i];
+      //   }
+      // }
+
+      // let text = temp2 + "," + temp;
+
+      let latLng = Globals.data.coords.split(",");
+      this.lat = Number(latLng[0]);
+      this.lng = Number(latLng[1]);
+      // this.deliveryType(text);
+    }
+    this.showWeather();
     this.getMarks();
   }
 
   markerClicked($data) {
     this._checked = $data;
     this.setData($data);
-    console.log($data);
+    // console.log($data);
+  }
+
+  showWeather() {
+    console.log(this.lat, this.lng);
+    this.service.getWeather(`${this.lng}, ${this.lat}`).subscribe(res => {
+      console.log(res);
+      this._weather = res;
+    });
   }
 
   get places() {
@@ -143,5 +187,9 @@ export class PackesComponent implements OnInit {
 
   get timeToGet() {
     return this._timeToGet;
+  }
+
+  get weather() {
+    return this._weather;
   }
 }

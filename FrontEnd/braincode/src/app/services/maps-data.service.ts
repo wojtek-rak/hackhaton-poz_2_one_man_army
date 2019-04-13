@@ -26,4 +26,16 @@ export class MapsDataService {
       `http://braincode2019.azurewebsites.net/api/points/pointsFilter/${longitude},${latitude}`
     );
   }
+
+  public deliveryType(cost, type, latLng) {
+    return this._http.get(
+      `http://braincode2019.azurewebsites.net/api/preference/${cost}/${type}/${latLng}`
+    );
+  }
+
+  public getWeather(coords) {
+    return this._http.get(
+      `http://braincode2019.azurewebsites.net/api/weather/${coords}`
+    );
+  }
 }
