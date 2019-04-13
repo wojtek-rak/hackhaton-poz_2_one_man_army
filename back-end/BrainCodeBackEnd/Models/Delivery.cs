@@ -21,8 +21,8 @@ namespace BrainCodeBackEnd.Models
         public string Adres { get; set; }
         public string Kod_pocztowy { get; set; }
         public string Miasto { get; set; }
-        public string Dlugosc { get; set; }
-        public string Szerokosc { get; set; }
+        public float Dlugosc { get; set; }
+        public float Szerokosc { get; set; }
         public string Godziny_odbioru { get; set; }
         public string Uwagi { get; set; }
     }
