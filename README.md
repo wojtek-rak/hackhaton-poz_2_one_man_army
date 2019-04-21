@@ -1,6 +1,8 @@
 # poz_2_one_man_army
 Team One man army
 
+We have created app to improve delivery system in Allegro.
+
 Screenshots:
 
 ![alt text](https://i.imgur.com/JFQG0PZ.png)
